@@ -45,9 +45,31 @@ namespace WebAPI_QLNH.Controllers
         /// </summary>
         /// <returns>Role</returns>
         [HttpPost]
-        public Restaurant Post([FromQuery] Restaurant restaurant)
+        public Restaurant Post([FromBody] Restaurant restaurant)
         {
             _context.Restaurant.Add(restaurant);
+            _context.SaveChanges();
+            return restaurant;
+        }
+
+        /// <summary>
+        /// Thêm Role mới
+        /// </summary>
+        /// <returns>Role</returns>
+        [HttpPut]
+        public Restaurant Put([FromBody] Restaurant restaurant)
+        {
+            var res = _context.Restaurant.Find(restaurant.Id);
+
+            if(res == null)
+            {
+                return restaurant;
+            }
+            res.Name = restaurant.Name;
+            res.Description = restaurant.Description;
+            res.Phone = restaurant.Phone;
+            res.Address = restaurant.Address;
+
             _context.SaveChanges();
             return restaurant;
         }
