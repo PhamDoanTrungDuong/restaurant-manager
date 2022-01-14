@@ -39,4 +39,14 @@ export class DataService {
     const url = `${this.REST_API_SERVER}/role`;
     return this.httpClient.get<Role[]>(url, this.httpOptions);
   }
+
+  public postRole(payload: Role): Observable<Role> {
+    const url = `${this.REST_API_SERVER}/role`;
+    return this.httpClient.post<Role>(url, payload, this.httpOptions);
+  }
+
+  public putRole(payload: Role): Observable<Role> {
+    const url = `${this.REST_API_SERVER}/role`;
+    return this.httpClient.put<Role>(url, payload, this.httpOptions);
+  }
 }
