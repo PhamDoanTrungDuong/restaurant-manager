@@ -32,6 +32,7 @@ import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TagModule } from 'primeng/tag';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ConfirmDialogModule,
     InputTextareaModule,
     BrowserAnimationsModule,
+    TagModule,
   ],
   providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]

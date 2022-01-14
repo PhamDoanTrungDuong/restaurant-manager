@@ -9,7 +9,7 @@ import { Role } from './models/role.model';
   providedIn: 'root'
 })
 export class DataService {
-
+  public loginUserId = 1;
   private REST_API_SERVER = environment.api
   private httpOptions = {
     headers: new HttpHeaders({
