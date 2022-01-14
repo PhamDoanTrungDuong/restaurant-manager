@@ -22,7 +22,7 @@ namespace WebAPI_QLNH.Controllers
         [HttpGet]
         public IEnumerable<Location> Get()
         {
-            return _context.Location.ToList();
+            return _context.Locations.ToList();
         }
     }
 }

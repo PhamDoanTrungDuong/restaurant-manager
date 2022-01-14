@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPI_QLNH.Data;
 
 namespace WebAPI_QLNH.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220114055951_adjust5")]
+    partial class adjust5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,9 +57,6 @@ namespace WebAPI_QLNH.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("CreatedUserId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Deleted")
                         .HasColumnType("tinyint(1)");
 
@@ -70,22 +69,10 @@ namespace WebAPI_QLNH.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("RestaurantId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Updated")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("UpdatedUserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CreatedUserId");
-
-                    b.HasIndex("RestaurantId");
-
-                    b.HasIndex("UpdatedUserId");
 
                     b.ToTable("Guests");
                 });
@@ -395,9 +382,6 @@ namespace WebAPI_QLNH.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("CreatedUserId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Deleted")
                         .HasColumnType("tinyint(1)");
 
@@ -410,14 +394,7 @@ namespace WebAPI_QLNH.Migrations
                     b.Property<DateTime>("Updated")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("UpdatedUserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CreatedUserId");
-
-                    b.HasIndex("UpdatedUserId");
 
                     b.ToTable("Status");
                 });
@@ -522,27 +499,6 @@ namespace WebAPI_QLNH.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("WebAPI_QLNH.Models.Guest", b =>
-                {
-                    b.HasOne("WebAPI_QLNH.Models.User", "CreatedUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("WebAPI_QLNH.Models.Restaurant", "Restaurant")
-                        .WithMany()
-                        .HasForeignKey("RestaurantId");
-
-                    b.HasOne("WebAPI_QLNH.Models.User", "UpdatedUser")
-                        .WithMany()
-                        .HasForeignKey("UpdatedUserId");
-
-                    b.Navigation("CreatedUser");
-
-                    b.Navigation("Restaurant");
-
-                    b.Navigation("UpdatedUser");
-                });
-
             modelBuilder.Entity("WebAPI_QLNH.Models.GuestTable", b =>
                 {
                     b.HasOne("WebAPI_QLNH.Models.Guest", "Guest")
@@ -621,21 +577,6 @@ namespace WebAPI_QLNH.Migrations
                         .HasForeignKey("RestaurantId");
 
                     b.Navigation("Restaurant");
-                });
-
-            modelBuilder.Entity("WebAPI_QLNH.Models.Status", b =>
-                {
-                    b.HasOne("WebAPI_QLNH.Models.User", "CreatedUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedUserId");
-
-                    b.HasOne("WebAPI_QLNH.Models.User", "UpdatedUser")
-                        .WithMany()
-                        .HasForeignKey("UpdatedUserId");
-
-                    b.Navigation("CreatedUser");
-
-                    b.Navigation("UpdatedUser");
                 });
 
             modelBuilder.Entity("WebAPI_QLNH.Models.Unit", b =>

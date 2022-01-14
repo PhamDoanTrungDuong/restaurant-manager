@@ -52,3 +52,9 @@ E:\NET\a_API\e_RestaurantManager\APIs\WebAPI_QLNH\WebAPI_QLNH\bin\Debug\net5.0\S
 E:\NET\a_API\e_RestaurantManager\APIs\WebAPI_QLNH\WebAPI_QLNH\bin\Debug\net5.0\System.Web.Http.Cors.dll
 E:\NET\a_API\e_RestaurantManager\APIs\WebAPI_QLNH\WebAPI_QLNH\bin\Debug\net5.0\Newtonsoft.Json.dll
 E:\NET\a_API\e_RestaurantManager\APIs\WebAPI_QLNH\WebAPI_QLNH\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+E:\NET\a_API\e_RestaurantManager\APIs\WebAPI_QLNH\WebAPI_QLNH\bin\Debug\net5.0\AutoMapper.dll
+E:\NET\a_API\e_RestaurantManager\APIs\WebAPI_QLNH\WebAPI_QLNH\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\NET\a_API\e_RestaurantManager\APIs\WebAPI_QLNH\WebAPI_QLNH\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\NET\a_API\e_RestaurantManager\APIs\WebAPI_QLNH\WebAPI_QLNH\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+E:\NET\a_API\e_RestaurantManager\APIs\WebAPI_QLNH\WebAPI_QLNH\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+E:\NET\a_API\e_RestaurantManager\APIs\WebAPI_QLNH\WebAPI_QLNH\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll

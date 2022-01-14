@@ -22,7 +22,7 @@ namespace WebAPI_QLNH.Controllers
         [HttpGet]
         public IEnumerable<GuestTable> Get()
         {
-            return _context.GuestTable.ToList();
+            return _context.GuestTables.ToList();
         }
     }
 }

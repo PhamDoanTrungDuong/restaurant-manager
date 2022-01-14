@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAPI_QLNH.Data;
+using WebAPI_QLNH.DTO;
 using WebAPI_QLNH.Models;
 
 namespace WebAPI_QLNH.Controllers
@@ -14,19 +17,44 @@ namespace WebAPI_QLNH.Controllers
     public class RestaurantController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        public RestaurantController(ApplicationDbContext context)
+        private readonly IMapper _mapper;
+        public RestaurantController(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         /// <summary>
         /// Lấy tất cả danh sách Roles
         /// </summary>
         /// <returns>Danh sách Roles</returns>
+        //[HttpGet]
+        //public IEnumerable<Restaurant> Get()
+        //{
+        //    return _context.Restaurants
+        //                    .Where(c => !c.Deleted)
+        //                    .Include(r => r.CreatedUser)
+        //                    .Include(r => r.UpdatedUser)
+        //                    .ToList();
+        //}
+
         [HttpGet]
-        public IEnumerable<Restaurant> Get()
+        public async Task<ActionResult<IEnumerable<RestaurantDTO>>> Get()
         {
-            return _context.Restaurant.ToList();
+            try
+            {
+                Task.Delay(2000).Wait();
+                var data = await _context.Restaurants
+                          .Include(r => r.CreatedUser)
+                          .Include(r => r.UpdatedUser)
+                          .ToArrayAsync();
+                var model = _mapper.Map<IEnumerable<RestaurantDTO>>(data);
+                return new JsonResult(model);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest("not good");
+            }
         }
 
         /// <summary>
@@ -37,7 +65,7 @@ namespace WebAPI_QLNH.Controllers
         [HttpGet("Id")]
         public Restaurant Get([FromQuery] int Id)
         {
-            return _context.Restaurant.Where(res => res.Id == Id).FirstOrDefault();
+            return _context.Restaurants.Where(res => res.Id == Id).FirstOrDefault();
         }
 
         /// <summary>
@@ -47,7 +75,12 @@ namespace WebAPI_QLNH.Controllers
         [HttpPost]
         public Restaurant Post([FromBody] Restaurant restaurant)
         {
-            _context.Restaurant.Add(restaurant);
+            var createdUser = _context.Users.Find(restaurant.CreatedUser.Id);
+            restaurant.CreatedUser = createdUser;
+            var updateUser = _context.Users.Find(restaurant.UpdatedUser.Id);
+            restaurant.UpdatedUser = updateUser;
+
+            _context.Restaurants.Add(restaurant);
             _context.SaveChanges();
             return restaurant;
         }
@@ -59,7 +92,7 @@ namespace WebAPI_QLNH.Controllers
         [HttpPut]
         public Restaurant Put([FromBody] Restaurant restaurant)
         {
-            var res = _context.Restaurant.Find(restaurant.Id);
+            var res = _context.Restaurants.Find(restaurant.Id);
 
             if(res == null)
             {
@@ -69,6 +102,9 @@ namespace WebAPI_QLNH.Controllers
             res.Description = restaurant.Description;
             res.Phone = restaurant.Phone;
             res.Address = restaurant.Address;
+
+            var updateUser = _context.Users.Find((restaurant.UpdatedUser != null) ? restaurant.UpdatedUser.Id : 1);
+            restaurant.UpdatedUser = updateUser;
 
             _context.SaveChanges();
             return restaurant;

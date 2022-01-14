@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAPI_QLNH.Data;
+using WebAPI_QLNH.DTO;
 using WebAPI_QLNH.Models;
 
 namespace WebAPI_QLNH.Controllers
@@ -14,19 +17,46 @@ namespace WebAPI_QLNH.Controllers
     public class RoleController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        public RoleController(ApplicationDbContext context)
+        private readonly IMapper _mapper;
+        public RoleController(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         /// <summary>
         /// Lấy tất cả danh sách Roles
         /// </summary>
         /// <returns>Danh sách Roles</returns>
+        //[HttpGet]
+        //public IEnumerable<Role> Get()
+        //{
+        //    return _context.Roles.ToList();
+        //}
+
         [HttpGet]
-        public IEnumerable<Role> Get()
+        public async Task<ActionResult<IEnumerable<RoleDTO>>> Get()
         {
-            return _context.Role.ToList();
+            try
+            {
+                var data = await _context.Roles.Select(d => new Role
+                {
+                    Id = d.Id,
+                    Name = d.Name,
+                    Description = d.Description,
+                    Created = d.Created,
+                    Updated = d.Updated,
+                    Deleted = d.Deleted,
+                    Restaurant = d.Restaurant,
+                }).ToArrayAsync();
+
+                var model = _mapper.Map<IEnumerable<RoleDTO>>(data);
+                return new JsonResult(model);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest("not good");
+            }
         }
 
         /// <summary>
@@ -37,7 +67,7 @@ namespace WebAPI_QLNH.Controllers
         [HttpGet("Id")]
         public Role Get([FromQuery] int Id)
         {
-            return _context.Role.Where(role => role.Id == Id).FirstOrDefault();
+            return _context.Roles.Where(role => role.Id == Id).FirstOrDefault();
         }
 
         /// <summary>
@@ -45,11 +75,31 @@ namespace WebAPI_QLNH.Controllers
         /// </summary>
         /// <returns>Role</returns>
         [HttpPost]
-        public Role Post([FromQuery] Role Role)
+        public Role Post([FromBody] Role Role)
         {
-            _context.Role.Add(Role);
+            _context.Roles.Add(Role);
             _context.SaveChanges();
             return Role;
+        }
+
+        /// <summary>
+        /// Thêm Role mới
+        /// </summary>
+        /// <returns>Role</returns>
+        [HttpPut]
+        public Role Put([FromBody] Role role)
+        {
+            var ro = _context.Roles.Find(role.Id);
+
+            if (ro == null)
+            {
+                return role;
+            }
+            ro.Name = role.Name;
+            ro.Description = role.Description;
+
+            _context.SaveChanges();
+            return role;
         }
     }
 }

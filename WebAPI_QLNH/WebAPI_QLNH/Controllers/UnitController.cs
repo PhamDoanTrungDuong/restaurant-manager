@@ -22,7 +22,7 @@ namespace WebAPI_QLNH.Controllers
         [HttpGet]
         public IEnumerable<Unit> Get()
         {
-            return _context.Unit.ToList();
+            return _context.Units.ToList();
         }
     }
 }

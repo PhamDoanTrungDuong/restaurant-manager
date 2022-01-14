@@ -9,20 +9,20 @@ namespace WebAPI_QLNH.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<User> User { get; set; }
-        public DbSet<Item> Item { get; set; }
-        public DbSet<Category> Category { get; set; }
-        public DbSet<Guest> Guest { get; set; }
-        public DbSet<GuestTable> GuestTable { get; set; }
-        public DbSet<Role> Role { get; set; }
-        public DbSet<Unit> Unit { get; set; }
-        public DbSet<UnitType> UnitType { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Item> Items{ get; set; }
+        public DbSet<Category> Categorys { get; set; }
+        public DbSet<Guest> Guests { get; set; }
+        public DbSet<GuestTable> GuestTables { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Unit> Units { get; set; }
+        public DbSet<UnitType> UnitTypes { get; set; }
         public DbSet<Status> Status { get; set; }
-        public DbSet<ItemImage> ItemImage { get; set; }
-        public DbSet<Order> Order { get; set; }
-        public DbSet<OrderItem> OrderItem { get; set; }
-        public DbSet<Location> Location { get; set; }
-        public DbSet<Restaurant> Restaurant { get; set; }
+        public DbSet<ItemImage> ItemImages { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Restaurant> Restaurants { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
             Database.EnsureCreated();

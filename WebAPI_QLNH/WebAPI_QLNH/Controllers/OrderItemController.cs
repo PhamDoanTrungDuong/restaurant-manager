@@ -22,7 +22,7 @@ namespace WebAPI_QLNH.Controllers
         [HttpGet]
         public IEnumerable<OrderItem> Get()
         {
-            return _context.OrderItem.ToList();
+            return _context.OrderItems.ToList();
         }
     }
 }

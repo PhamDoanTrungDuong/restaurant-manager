@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,6 +16,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using WebAPI_QLNH.Data;
+using WebAPI_QLNH.Mapping;
 
 namespace WebAPI_QLNH
 {
@@ -34,6 +36,14 @@ namespace WebAPI_QLNH
             services.AddDbContextPool<ApplicationDbContext>(options => 
                 options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
 
+            // Auto Mapper Configurations
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -45,10 +55,13 @@ namespace WebAPI_QLNH
                     .AllowAnyOrigin().AllowAnyMethod()
                     .AllowAnyHeader());
             });
+
+            //Mapper. Initialize(cfg => cfg. AddProfile<MappingProfile>());
+            //services.AddAutoMapper (mapper);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

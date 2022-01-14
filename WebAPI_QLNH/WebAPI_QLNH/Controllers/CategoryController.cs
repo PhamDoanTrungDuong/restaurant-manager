@@ -23,7 +23,7 @@ namespace WebAPI_QLNH.Controllers
         [HttpGet]
         public IEnumerable<Category> Get()
         {
-            return _context.Category.ToList();
+            return _context.Categorys.ToList();
         }
     }
 }
