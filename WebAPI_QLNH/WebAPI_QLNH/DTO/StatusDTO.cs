@@ -13,6 +13,7 @@ namespace WebAPI_QLNH.DTO
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
         public bool Deleted { get; set; }
+        public virtual RestaurantDTO Restaurant { get; set; }
         public virtual UserDTO CreatedUser { get; set; }
         public virtual UserDTO UpdatedUser { get; set; }
     }

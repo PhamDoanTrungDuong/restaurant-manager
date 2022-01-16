@@ -43,7 +43,7 @@ namespace WebAPI_QLNH.Controllers
         {
             try
             {
-                Task.Delay(2000).Wait();
+                Task.Delay(500).Wait();
                 var data = await _context.Restaurants
                           .Include(r => r.CreatedUser)
                           .Include(r => r.UpdatedUser)
