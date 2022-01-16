@@ -2,9 +2,32 @@
 
 <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" *ngIf="loading"></p-progressBar>
 <div class="card" *ngIf="!loading">
-    <p-toolbar styleClass="p-mb-4">
+    <p-toolbar styleClass="p-mb-4"> 
         <ng-template pTemplate="left">
-            <button pButton pRipple label="Thêm Nhà Hàng" icon="pi pi-plus" class="p-button-success p-mr-2"
+            <p-dropdown [options]="restaurants" 
+                [(ngModel)]="selectedRestaurant" 
+                optionLabel="name" 
+                [filter]="true" 
+                filterBy="name" 
+                [showClear]="true" 
+                [style]="{ width: '400px' }" 
+                placeholder="Select a Country"
+                (onChange)="onRestaurantChange($event.value)"
+            >
+                <ng-template pTemplate="selectedItem">
+                    <div class="restaurant-item restaurant-item-value"  *ngIf="selectedRestaurant">
+                        <!-- <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + selectedRestaurant.code.toLowerCase()" /> -->
+                        <div>{{ selectedRestaurant.name }}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-restaurant pTemplate="item">
+                    <div class="restaurant-item">
+                        <!-- <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + country.code.toLowerCase()" /> -->
+                        <div>{{ restaurant?.name }}</div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+            <button pButton pRipple label="Thêm Tình Trạng" icon="pi pi-plus" class="p-button-success p-mr-2"
                 (click)="openNew()"></button>
         </ng-template>
 
@@ -18,7 +41,7 @@
         </ng-template>  
     </p-toolbar>
 
-    <p-table #dt [value]="restaurants" [rows]="10" [paginator]="true" [globalFilterFields]="['name','address','phone','description']"
+    <p-table #dt [value]="displayStatuses" [rows]="10" [paginator]="true" [globalFilterFields]="['name','address','phone','description','createdUser']"
         [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [showCurrentPageReport]="true">
         <!-- <ng-template pTemplate="caption">
@@ -37,91 +60,77 @@
                 </th>
                 <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon>
                 </th>
-                <th pSortableColumn="address">Địa Chỉ <p-sortIcon field="address"></p-sortIcon>
-                </th>
-                <th pSortableColumn="phone">Số Điện Thoại <p-sortIcon field="phone"></p-sortIcon>
-                </th>
                 <th pSortableColumn="description">Chú Thích <p-sortIcon field="description"></p-sortIcon>
                 </th>
-                <th pSortableColumn="created">Ngày Tạo <p-sortIcon field="created"></p-sortIcon>
+                <th pSortableColumn="created">Ngày Tạo/ Người Tạo <p-sortIcon field="created"></p-sortIcon>
                 </th>
-                <th pSortableColumn="updated">Ngày Cập Nhật <p-sortIcon field="updated"></p-sortIcon>
+                <th pSortableColumn="updated">Ngày Cập Nhật/ Người Cập Nhật <p-sortIcon field="updated"></p-sortIcon>
                 </th>
                 <th pSortableColumn="deleted">Xóa <p-sortIcon field="deleted"></p-sortIcon>
                 </th>
                 <th></th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-restaurant>
+        <ng-template pTemplate="body" let-status>
             <tr>
                 <td>
-                    <p-tableCheckbox [value]="restaurant"></p-tableCheckbox>
+                    <p-tableCheckbox [value]="statuses"></p-tableCheckbox>
                 </td>
-                <td>{{ restaurant.name }}</td>
-                <td>{{ restaurant.address }}</td>
-                <td>{{ restaurant.phone }}</td>
-                <td>{{ restaurant.description }}</td>
+                <td>{{ status.name }}</td>
+                <td>{{ status.description }}</td>
                 <td>
-                    {{ restaurant.created | date: "dd/MM/yyyy" }}
-                    {{ restaurant.createdUser?.userName }}
+                    {{ status.created | date: "dd/MM/yyyy" }} -
+                    {{ status.createdUser?.userName }}
                 </td>
                 <td>
-                    {{ restaurant.updated | date: "dd/MM/yyyy" }}
-                    {{ restaurant.updatedUser?.userName }}
+                    {{ status.updated | date: "dd/MM/yyyy" }} -
+                    {{ status.updatedUser?.userName }}
                 </td>
                 <td>
-                    {{ restaurant.deleted}}
-                    <!-- <div *ngIf="restaurant.deleted, else Recover"><p-tag styleClass="p-mr-2" icon="pi pi-times" severity="danger" value="Block"></p-tag></div>    
+                    {{ status.deleted}}
+                    <!-- <div *ngIf="status.deleted, else Recover"><p-tag styleClass="p-mr-2" icon="pi pi-times" severity="danger" value="Block"></p-tag></div>    
                     <ng-template #Recover><p-tag styleClass="p-mr-2" icon="pi pi-check" severity="success" value="Stable" ></p-tag></ng-template> -->
                 </td>
                 <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
-                        (click)="editRestaurant(restaurant)"></button>
+                        (click)="editStatus(status)"></button>
                     <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
-                        (click)="deleteRestaurant(restaurant)"></button>
+                        (click)="deleteStatus(status)"></button>
                     <button pButton pRipple icon="pi pi-undo" class="p-button-rounded p-button-warning"
-                        (click)="recoverRestaurant(restaurant)"></button>   
+                        (click)="recoverStatus(status)"></button>   
                 </td>
             </tr>
         </ng-template>
         <!-- <ng-template pTemplate="summary">
         <div class="p-d-flex p-ai-center p-jc-between">
-            In total there are {{restaurant ? restaurant.length : 0 }} products.
+            In total there are {{status ? status.length : 0 }} products.
         </div>
     </ng-template> -->
     </p-table>
 </div>
 
-<p-dialog [(visible)]="restaurantDialog" [style]="{width: '450px'}" header="Restaurant Details" [modal]="true"
+<p-dialog [(visible)]="statusDialog" [style]="{width: '450px'}" header="Status Details" [modal]="true"
     styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
-            <label for="name">Tên Quán</label>
-            <input type="text" pInputText id="name" [(ngModel)]="restaurant.name" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !restaurant.name">Name is required.</small>
-        </div>
-        <div class="p-field">
-            <label for="address">Địa chỉ</label>
-            <input type="text" pInputText id="address" [(ngModel)]="restaurant.address" required autofocus />
-        </div>
-        <div class="p-field">
-            <label for="phone">Số Điện Thoại</label>
-            <input type="text" pInputText id="phone" [(ngModel)]="restaurant.phone" required autofocus />
+            <label for="name">Tên Tình Trạng</label>
+            <input type="text" pInputText id="name" [(ngModel)]="status.name" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !status.name">Status Name is required.</small>
         </div>
         <div class="p-field">
             <label for="description">Description</label>
-            <textarea id="description" pInputTextarea [(ngModel)]="restaurant.description" required rows="3"
+            <textarea id="description" pInputTextarea [(ngModel)]="status.description" required rows="3"
                 cols="20"></textarea>
         </div>
 
         <!-- <div class="p-formgrid p-grid">
             <div class="p-field p-col">
                 <label for="price">Price</label>
-                <p-inputNumber id="price" [(ngModel)]="restaurant.price" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
+                <p-inputNumber id="price" [(ngModel)]="status.price" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
             </div>
             <div class="p-field p-col">
                 <label for="quantity">Quantity</label>
-                <p-inputNumber id="quantity" [(ngModel)]="restaurant.quantity"></p-inputNumber>
+                <p-inputNumber id="quantity" [(ngModel)]="status.quantity"></p-inputNumber>
             </div>
         </div>-->
     </ng-template>
@@ -129,7 +138,7 @@
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
         <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text"
-            (click)="saveRestaurant()"></button>
+            (click)="saveStatus()"></button>
     </ng-template>
 </p-dialog>
 

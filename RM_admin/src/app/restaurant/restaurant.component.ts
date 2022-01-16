@@ -20,34 +20,9 @@ export class RestaurantComponent {
   public restaurants: Restaurant[] =[]
   public restaurantDialog: boolean = false
   public submitted = true;
-  private newRestaurant: Restaurant = {
-    id: 0,
-    name: '',
-    description: '',
-    phone: '',
-    address: '',
-    created: new Date(),
-    updated: new Date(),
-    deleted: false,
-    createdUser: {
-      id: 1,
-      userName: '',
-      created: new Date(),
-      updated: new Date(),
-      createdUserId: 0,
-      updateUserId: 0
-    },
-    updatedUser: {
-      id: 1,
-      userName: '',
-      created: new Date(),
-      updated: new Date(),
-      createdUserId: 0,
-      updateUserId: 0
-    }
-  }
+  
 
-  public restaurant: Restaurant = Object.assign({}, this.newRestaurant);
+  public restaurant: Restaurant = Object.assign({}, this.dataServices.newRestaurant);
   public loading = true;
   ngOnInit(): void {
     this.Loaddata()
@@ -115,7 +90,7 @@ export class RestaurantComponent {
 
   public openNew(){
     console.log("open restaurant")
-    this.restaurant = Object.assign({}, this.newRestaurant); 
+    this.restaurant = Object.assign({}, this.dataServices.newRestaurant); 
     //console.log('obj', this.restaurant)
     this.restaurantDialog = true;
   }

@@ -20,22 +20,35 @@ export class AppComponent {
           {
               label: 'Nhà Hàng',
               icon: 'pi pi-fw pi-home',
-              command: () => this.router.navigate(['/restaurant']),
+              routerLink: ['/restaurant'],
+              routerLinkActiveOptions: {
+                  exact: true
+              }
+              //command: () => this.router.navigate(['/restaurant']),
           },
           {
               label: 'Quyền',
               icon: 'pi pi-fw pi-user-edit',
-              command: () => this.router.navigate(['/role']),
+              routerLink: ['/role'],
+              routerLinkActiveOptions: {
+                  exact: true
+              }
           },
           {
               label: 'Tình Trạng',
               icon: 'pi pi-fw pi-flag',
-              command: () => this.router.navigate(['/role']),
+              routerLink: ['/status'],
+              routerLinkActiveOptions: {
+                  exact: true
+              }
           },
           {
               label: 'Khu Vực',
               icon: 'pi pi-fw pi-align-justify',
-              command: () => this.router.navigate(['/role']),
+              routerLink: ['/area'],
+              routerLinkActiveOptions: {
+                  exact: true
+              }
           },
           {
               label: 'Đơn Vị',
@@ -45,27 +58,42 @@ export class AppComponent {
           {
               label: 'Thể Loại',
               icon: 'pi pi-fw pi-user-edit',
-              command: () => this.router.navigate(['/role']),
+              routerLink: ['/category'],
+              routerLinkActiveOptions: {
+                  exact: true
+              }
           },
           {
               label: 'Nhân Sự',
               icon: 'pi pi-fw pi-user-edit',
-              command: () => this.router.navigate(['/role']),
+              routerLink: ['/user'],
+              routerLinkActiveOptions: {
+                  exact: true
+              }
           },
           {
               label: 'Bàn Ăn',
               icon: 'pi pi-fw pi-table',
-              command: () => this.router.navigate(['/role']),
+              routerLink: ['/table'],
+              routerLinkActiveOptions: {
+                  exact: true
+              }
           },
           {
               label: 'Thức Ăn',
               icon: 'pi pi-fw pi-cloud',
-              command: () => this.router.navigate(['/role']),
+              routerLink: ['/food'],
+              routerLinkActiveOptions: {
+                  exact: true
+              }
           },
           {
               label: 'Logout',
               icon: 'pi pi-fw pi-sign-out',
-              command: () => this.router.navigate(['/role']),
+              routerLink: ['/logout'],
+              routerLinkActiveOptions: {
+                  exact: true
+              }
           }
       ];
   }

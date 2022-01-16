@@ -33,6 +33,7 @@ import { MessageService } from 'primeng/api';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TagModule } from 'primeng/tag';
+import { StatusComponent } from './status/status.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { TagModule } from 'primeng/tag';
     PageNotFoundComponent,
     RoleComponent,
     RestaurantComponent,
+    StatusComponent,
   ],
   imports: [
     BrowserModule,
