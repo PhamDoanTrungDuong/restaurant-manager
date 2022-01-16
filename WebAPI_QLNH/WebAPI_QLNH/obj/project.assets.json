@@ -7084,11 +7084,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj",
+      "projectUniqueName": "D:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj",
       "projectName": "WebAPI_QLNH",
-      "projectPath": "E:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj",
+      "projectPath": "D:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\obj\\",
+      "outputPath": "D:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7164,24 +7164,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x86",
-            "version": "[5.0.13, 5.0.13]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -7190,7 +7172,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   },

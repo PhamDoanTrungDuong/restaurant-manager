@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8Fnb0CKKmEFn6TuszRlhh3qq48X3tAol4hZoEGPhLp3Hxu4yp/5RSz3jO6vSmKTZLr8ne1WJihu0ZEFzUoe/qg==",
+  "dgSpecHash": "qMZ/3HgxNcSVDhBJibq3D8C5dD4d+4XHdZ5U684m/118mk+cRJLYMsMwTcxmgp0s866jgHaQkXFXpsdUNXh3rw==",
   "success": true,
-  "projectFilePath": "E:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj",
+  "projectFilePath": "D:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
@@ -137,11 +137,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.host.win-x86\\5.0.13\\microsoft.netcore.app.host.win-x86.5.0.13.nupkg.sha512"
+    "C:\\Users\\Admin\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": [
     {
