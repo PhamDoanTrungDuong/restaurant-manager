@@ -28,7 +28,7 @@
                 </ng-template>
             </p-dropdown>
             <button pButton pRipple label="Thêm Tình Trạng" icon="pi pi-plus" class="p-button-success p-mr-2"
-                (click)="openNew()"></button>
+                (click)="openNew()" [disabled]="!selectedRestaurant"></button>
         </ng-template>
 
         <ng-template pTemplate="right">

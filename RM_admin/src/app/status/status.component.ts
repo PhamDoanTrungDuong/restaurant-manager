@@ -85,6 +85,9 @@ export class StatusComponent implements OnInit {
       this.dataServices.postStatus(this.status).subscribe((data) => {
         console.log('data', data);
         //this.statuses.push(data);
+        this.displayStatuses = this.statuses.filter(status => 
+          status.restaurant.id === this.selectedRestaurant?.id
+        );
         this.hideDialog(false, true);
       });
     } else {
@@ -99,8 +102,18 @@ export class StatusComponent implements OnInit {
   }
 
   public openNew() {
+    if(!this.selectedRestaurant){
+      this.messageServices.add({
+        severity: 'error',
+        summary: 'Lỗi',
+        detail: 'Hãy chọn nhà hàng',
+        life: 3000,
+      });
+      return
+    }
     console.log('open status');
     this.status = Object.assign({}, this.dataServices.newStatus);
+    this.status.restaurant.id = this.selectedRestaurant.id;
     //console.log('obj', this.status)
     this.statusDialog = true;
   }
@@ -164,10 +177,11 @@ export class StatusComponent implements OnInit {
   }
 
   onRestaurantChange(event: any){
-    const restaurant = event;
+    const restaurant: Restaurant = event;
     console.log('onChange: ', restaurant);
-    // this.displayStatuses = this.statuses.filter(res => {
-    //   res.id === restaurant.id
-    // });
+    this.displayStatuses = this.statuses.filter(status => 
+      status.restaurant.id === restaurant.id
+    );
+    this.Loaddata()
   }
 }
