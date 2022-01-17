@@ -6,39 +6,39 @@ namespace WebAPI_QLNH.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "RestaurantId",
-                table: "Status",
-                type: "int",
-                nullable: true);
+            //migrationBuilder.AddColumn<int>(
+            //    name: "RestaurantId",
+            //    table: "Status",
+            //    type: "int",
+            //    nullable: true);
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Status_RestaurantId",
-                table: "Status",
-                column: "RestaurantId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Status_RestaurantId",
+            //    table: "Status",
+            //    column: "RestaurantId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Status_Restaurants_RestaurantId",
-                table: "Status",
-                column: "RestaurantId",
-                principalTable: "Restaurants",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+            //migrationBuilder.AddForeignKey(
+            //    name: "FK_Status_Restaurants_RestaurantId",
+            //    table: "Status",
+            //    column: "RestaurantId",
+            //    principalTable: "Restaurants",
+            //    principalColumn: "Id",
+            //    onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Status_Restaurants_RestaurantId",
-                table: "Status");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_Status_Restaurants_RestaurantId",
+            //    table: "Status");
 
-            migrationBuilder.DropIndex(
-                name: "IX_Status_RestaurantId",
-                table: "Status");
+            //migrationBuilder.DropIndex(
+            //    name: "IX_Status_RestaurantId",
+            //    table: "Status");
 
-            migrationBuilder.DropColumn(
-                name: "RestaurantId",
-                table: "Status");
+            //migrationBuilder.DropColumn(
+            //    name: "RestaurantId",
+            //    table: "Status");
         }
     }
 }

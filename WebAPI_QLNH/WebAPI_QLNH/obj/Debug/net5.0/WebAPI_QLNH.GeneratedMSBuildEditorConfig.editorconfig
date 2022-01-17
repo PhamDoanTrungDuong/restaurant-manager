@@ -7,4 +7,4 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebAPI_QLNH
-build_property.ProjectDir = D:\NET\a_API\e_RestaurantManager\APIs\WebAPI_QLNH\WebAPI_QLNH\
+build_property.ProjectDir = C:\.NET\SERVER\e_RestaurantManager\WebAPI_QLNH\WebAPI_QLNH\

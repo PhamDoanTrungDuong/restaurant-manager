@@ -46,6 +46,7 @@ namespace WebAPI_QLNH.Controllers
                 var data = await _context.Status
                           .Include(r => r.CreatedUser)
                           .Include(r => r.UpdatedUser)
+                          .Include(r => r.Restaurant)
                           .ToArrayAsync();
                 var model = _mapper.Map<IEnumerable<StatusDTO>>(data);
                 return new JsonResult(model);
@@ -78,6 +79,8 @@ namespace WebAPI_QLNH.Controllers
             status.CreatedUser = createdUser;
             var updateUser = _context.Users.Find(status.UpdatedUser.Id);
             status.UpdatedUser = updateUser;
+            var restaurant = _context.Restaurants.Find(status.Restaurant.Id);
+            status.Restaurant = restaurant;
 
             _context.Status.Add(status);
             _context.SaveChanges();

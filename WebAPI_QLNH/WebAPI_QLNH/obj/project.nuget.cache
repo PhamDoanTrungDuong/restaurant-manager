@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qMZ/3HgxNcSVDhBJibq3D8C5dD4d+4XHdZ5U684m/118mk+cRJLYMsMwTcxmgp0s866jgHaQkXFXpsdUNXh3rw==",
+  "dgSpecHash": "kylGhFmnA88p6nId87xB4heQpbCI2EV1A53Dk6+0/bOWNowV364KzPpPF0kLf84wZ/h/38Tx/6cuNIHzg3Ei+A==",
   "success": true,
-  "projectFilePath": "D:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj",
+  "projectFilePath": "C:\\.NET\\SERVER\\e_RestaurantManager\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj": {}
+    "C:\\.NET\\SERVER\\e_RestaurantManager\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj": {}
   },
   "projects": {
-    "D:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj": {
+    "C:\\.NET\\SERVER\\e_RestaurantManager\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj",
+        "projectUniqueName": "C:\\.NET\\SERVER\\e_RestaurantManager\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj",
         "projectName": "WebAPI_QLNH",
-        "projectPath": "D:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj",
+        "projectPath": "C:\\.NET\\SERVER\\e_RestaurantManager\\WebAPI_QLNH\\WebAPI_QLNH\\WebAPI_QLNH.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\NET\\a_API\\e_RestaurantManager\\APIs\\WebAPI_QLNH\\WebAPI_QLNH\\obj\\",
+        "outputPath": "C:\\.NET\\SERVER\\e_RestaurantManager\\WebAPI_QLNH\\WebAPI_QLNH\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
